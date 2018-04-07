@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Secret Hitler Assistant</string>
+    <string name="vote">Vote</string>
+    <string name="logo">Logo</string>
+    <string name="presidency_button">Choose President</string>
+    <string name="first_president_text">The first President is&#8230;</string>
+    <string name="select_players_text">Select number of players</string>
+    <string name="button_5">5</string>
+    <string name="button_6">6</string>
+    <string name="button_7">7</string>
+    <string name="button_8">8</string>
+    <string name="button_9">9</string>
+    <string name="button_10">10</string>
+    <string name="ja">Ja!</string>
+    <string name="nein">Nein!</string>
+    <string name="total_votes">Total votes: </string>
+    <string name="vote_again">Vote again</string>
+</resources>
