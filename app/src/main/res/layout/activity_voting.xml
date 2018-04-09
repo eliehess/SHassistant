@@ -8,7 +8,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:text=""
+        android:textSize="40sp"/>
 
     <TextView
         android:id="@+id/select_players_text_voting"
@@ -77,9 +78,10 @@
         android:textSize="16sp"/>
 
     <ImageView
+        android:contentDescription="@string/result_description"
         android:id="@+id/result_image"
-        android:layout_width="145sp"
-        android:layout_height="94sp"
+        android:layout_width="163sp"
+        android:layout_height="106sp"
         android:src="@drawable/blank"/>
 
     <LinearLayout

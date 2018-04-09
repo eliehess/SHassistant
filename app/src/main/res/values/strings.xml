@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Secret Hitler Assistant</string>
+    <string name="app_name">SH Assistant</string>
     <string name="vote">Vote</string>
     <string name="logo">Logo</string>
     <string name="presidency_button">Choose President</string>
@@ -16,4 +16,5 @@
     <string name="nein">Nein!</string>
     <string name="total_votes">Total votes: </string>
     <string name="vote_again">Vote again</string>
+    <string name="result_description">Image containing ja or nein based on result of vote</string>
 </resources>
