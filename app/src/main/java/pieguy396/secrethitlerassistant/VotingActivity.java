@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -16,18 +17,19 @@ public class VotingActivity extends AppCompatActivity {
     private static final String KEY_NEIN_VOTES = "pieguy396.neinvotes";
     private static final String KEY_VISIBILITY = "pieguy396.visibility";
     private Button m5Button, m6Button, m7Button, m8Button, m9Button, m10Button;
-    private TextView mResultText, mVoteCounter, mSelectPlayersText, mPlayerCounter;
+    private TextView mVoteCounter, mSelectPlayersText, mPlayerCounter;
     private Button mJaButton, mNeinButton, mRepeatButton;
     private int mNumPlayers = 0;
     private int mJaVotes = 0, mNeinVotes = 0;
     private String mVisibility = "potato";
+    private ImageView mResultImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voting);
 
-        mResultText = (TextView) findViewById(R.id.result_text);
+        mResultImage = (ImageView) findViewById(R.id.result_image);
         mVoteCounter = (TextView) findViewById(R.id.vote_counter);
         mPlayerCounter = (TextView) findViewById(R.id.player_counter);
 
@@ -175,17 +177,16 @@ public class VotingActivity extends AppCompatActivity {
         if (totalVotes != mNumPlayers)
             return;
 
-        setPlayerCountVisibilities(View.INVISIBLE);
-        setJaNeinVisibilities(View.INVISIBLE);
-        setFinalStuffVisibilities(View.VISIBLE);
-        mVisibility = "F";
+        activeFinalStuff();
 
-        if(mNeinVotes >= mJaVotes)
-            temp = "Nein! (" + mJaVotes + " to " + mNeinVotes + ")";
-        else
-            temp = "Ja! (" + mJaVotes + " to " + mNeinVotes + ")";
-
-        mResultText.setText(temp);
+        if(mNeinVotes >= mJaVotes) {
+            mResultImage.setImageResource(R.drawable.nein);
+            temp = mJaVotes + " to " + mNeinVotes;
+        } else {
+            mResultImage.setImageResource(R.drawable.ja);
+            temp = mJaVotes + " to " + mNeinVotes;
+        }
+        mVoteCounter.setText(temp);
     }
 
     private void setNumPlayers(int numPlayers) {
@@ -193,10 +194,7 @@ public class VotingActivity extends AppCompatActivity {
         String temp = String.valueOf(numPlayers) + " players";
         mPlayerCounter.setText(temp);
 
-        setPlayerCountVisibilities(View.INVISIBLE);
-        setJaNeinVisibilities(View.VISIBLE);
-        setFinalStuffVisibilities(View.INVISIBLE);
-        mVisibility = "J";
+        activeJaNein();
     }
 
     private void setPlayerCountVisibilities(int visibility) {
@@ -212,19 +210,19 @@ public class VotingActivity extends AppCompatActivity {
     private void setJaNeinVisibilities(int visibility) {
         mJaButton.setVisibility(visibility);
         mNeinButton.setVisibility(visibility);
-        mVoteCounter.setVisibility(visibility);
         mPlayerCounter.setVisibility(visibility);
     }
 
     private void setFinalStuffVisibilities(int visibility) {
         mRepeatButton.setVisibility(visibility);
-        mResultText.setVisibility(visibility);
+        mResultImage.setVisibility(visibility);
     }
 
     private void activePlayerCount() {
         setPlayerCountVisibilities(View.VISIBLE);
         setJaNeinVisibilities(View.INVISIBLE);
         setFinalStuffVisibilities(View.INVISIBLE);
+        mVoteCounter.setVisibility(View.INVISIBLE);
         mVisibility = "P";
     }
 
@@ -232,6 +230,9 @@ public class VotingActivity extends AppCompatActivity {
         setPlayerCountVisibilities(View.INVISIBLE);
         setJaNeinVisibilities(View.VISIBLE);
         setFinalStuffVisibilities(View.INVISIBLE);
+        mVoteCounter.setVisibility(View.VISIBLE);
+        mJaButton.setVisibility(View.VISIBLE);
+        mNeinButton.setVisibility(View.VISIBLE);
         mVisibility = "J";
     }
 
@@ -239,6 +240,7 @@ public class VotingActivity extends AppCompatActivity {
         setPlayerCountVisibilities(View.INVISIBLE);
         setJaNeinVisibilities(View.INVISIBLE);
         setFinalStuffVisibilities(View.VISIBLE);
+        mVoteCounter.setVisibility(View.VISIBLE);
         mVisibility = "F";
     }
 }

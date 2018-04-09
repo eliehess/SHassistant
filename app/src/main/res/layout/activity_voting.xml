@@ -76,17 +76,11 @@
         android:textColor="#000"
         android:textSize="16sp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:id="@+id/result_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="28sp"/>
+    <ImageView
+        android:id="@+id/result_image"
+        android:layout_width="145sp"
+        android:layout_height="94sp"
+        android:src="@drawable/blank"/>
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -19,7 +19,8 @@
         <activity android:name=".PresidentActivity">
 
         </activity>
-        <activity android:name=".VotingActivity">
+        <activity android:name=".VotingActivity"
+            android:screenOrientation="portrait">
 
         </activity>
     </application>
