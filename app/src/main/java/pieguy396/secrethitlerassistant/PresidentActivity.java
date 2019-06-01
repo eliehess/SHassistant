@@ -23,9 +23,9 @@ public class PresidentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_president);
 
-        mDisplay = (TextView) findViewById(R.id.president_display);
+        mDisplay = findViewById(R.id.president_display);
 
-        m5Button = (Button) findViewById(R.id.player_button_5);
+        m5Button = findViewById(R.id.player_button_5);
         m5Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +34,7 @@ public class PresidentActivity extends AppCompatActivity {
             }
         });
 
-        m6Button = (Button) findViewById(R.id.player_button_6);
+        m6Button = findViewById(R.id.player_button_6);
         m6Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +43,7 @@ public class PresidentActivity extends AppCompatActivity {
             }
         });
 
-        m7Button = (Button) findViewById(R.id.player_button_7);
+        m7Button = findViewById(R.id.player_button_7);
         m7Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +52,7 @@ public class PresidentActivity extends AppCompatActivity {
             }
         });
 
-        m8Button = (Button) findViewById(R.id.player_button_8);
+        m8Button = findViewById(R.id.player_button_8);
         m8Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +61,7 @@ public class PresidentActivity extends AppCompatActivity {
             }
         });
 
-        m9Button = (Button) findViewById(R.id.player_button_9);
+        m9Button = findViewById(R.id.player_button_9);
         m9Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +70,7 @@ public class PresidentActivity extends AppCompatActivity {
             }
         });
 
-        m10Button = (Button) findViewById(R.id.player_button_10);
+        m10Button = findViewById(R.id.player_button_10);
         m10Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,12 +81,10 @@ public class PresidentActivity extends AppCompatActivity {
 
         setButtonVisibility(View.VISIBLE);
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             mText = savedInstanceState.getString(KEY_TEXT);
             mDisplay.setText(mText);
         }
-
-
     }
 
     @Override
@@ -108,22 +106,18 @@ public class PresidentActivity extends AppCompatActivity {
         String fin;
         int pos = InitializerActivity.randomWithRange(1, numPlayers);
 
-        if (pos == numPlayers) {
+        if (pos <= 0 || pos > numPlayers)
+            fin = "ERROR";
+        else if (pos == numPlayers)
             fin = "You!";
-        } else if(pos < (numPlayers / 2)) {
-            if (pos == 1)
-                fin = "the person to your left.";
-            else
-                fin = String.valueOf(pos) + " people to your left.";
-        } else if((pos == (numPlayers / 2)) && (numPlayers % 2 == 0)) {
-            fin = "the person across the table from you";
-        } else {
-            int right = numPlayers - pos;
-            if(right == 1)
-                fin = "the person to your right.";
-            else
-                fin = String.valueOf(right) + " people to your right.";
-        }
+        else if (pos == 1)
+            fin = "the person to your left.";
+        else if (pos == (numPlayers - 1))
+            fin = "the person to your right.";
+        else if (pos < ((numPlayers + 1) / 2))
+            fin = pos + " people to your left.";
+        else
+            fin = (numPlayers - pos) + " people to your right.";
 
         return fin;
     }

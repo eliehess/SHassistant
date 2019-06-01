@@ -29,9 +29,9 @@ public class VotingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voting);
 
-        mResultImage = (ImageView) findViewById(R.id.result_image);
-        mVoteCounter = (TextView) findViewById(R.id.vote_counter);
-        mPlayerCounter = (TextView) findViewById(R.id.player_counter);
+        mResultImage = findViewById(R.id.result_image);
+        mVoteCounter = findViewById(R.id.vote_counter);
+        mPlayerCounter = findViewById(R.id.player_counter);
 
         if(savedInstanceState != null) {
             mJaVotes = savedInstanceState.getInt(KEY_JA_VOTES);
@@ -46,13 +46,13 @@ public class VotingActivity extends AppCompatActivity {
             temp = "";
             int totalvotes = mJaVotes + mNeinVotes;
             if(totalvotes > 0)
-                temp = "Total votes: " + String.valueOf(totalvotes);
+                temp = "Total votes: " + totalvotes;
             mVoteCounter.setText(temp);
         }
 
-        mSelectPlayersText = (TextView) findViewById(R.id.select_players_text_voting);
+        mSelectPlayersText = findViewById(R.id.select_players_text_voting);
 
-        m5Button = (Button) findViewById(R.id.player_button_5);
+        m5Button = findViewById(R.id.player_button_5);
         m5Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +60,7 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
 
-        m6Button = (Button) findViewById(R.id.player_button_6);
+        m6Button = findViewById(R.id.player_button_6);
         m6Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +68,7 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
 
-        m7Button = (Button) findViewById(R.id.player_button_7);
+        m7Button = findViewById(R.id.player_button_7);
         m7Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +76,7 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
 
-        m8Button = (Button) findViewById(R.id.player_button_8);
+        m8Button = findViewById(R.id.player_button_8);
         m8Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +84,7 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
 
-        m9Button = (Button) findViewById(R.id.player_button_9);
+        m9Button = findViewById(R.id.player_button_9);
         m9Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +92,7 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
 
-        m10Button = (Button) findViewById(R.id.player_button_10);
+        m10Button = findViewById(R.id.player_button_10);
         m10Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +100,7 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
 
-        mJaButton = (Button) findViewById(R.id.ja_button);
+        mJaButton = findViewById(R.id.ja_button);
         mJaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +108,7 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
 
-        mNeinButton = (Button) findViewById(R.id.nein_button);
+        mNeinButton = findViewById(R.id.nein_button);
         mNeinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +116,7 @@ public class VotingActivity extends AppCompatActivity {
             }
         });
 
-        mRepeatButton = (Button) findViewById(R.id.vote_again_button);
+        mRepeatButton = findViewById(R.id.vote_again_button);
         mRepeatButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -171,7 +171,7 @@ public class VotingActivity extends AppCompatActivity {
 
     private void checkCompletion() {
         int totalVotes = mJaVotes + mNeinVotes;
-        String temp = "Total votes: " + String.valueOf(totalVotes);
+        String temp = "Total votes: " + totalVotes;
         mVoteCounter.setText(temp);
 
         if (totalVotes != mNumPlayers)
@@ -191,7 +191,7 @@ public class VotingActivity extends AppCompatActivity {
 
     private void setNumPlayers(int numPlayers) {
         mNumPlayers = numPlayers;
-        String temp = String.valueOf(numPlayers) + " players";
+        String temp = numPlayers + " players";
         mPlayerCounter.setText(temp);
 
         activeJaNein();

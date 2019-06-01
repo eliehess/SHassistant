@@ -15,7 +15,7 @@ public class InitializerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initializer);
 
-        mPresidencyButton = (Button) findViewById(R.id.presidency_button);
+        mPresidencyButton = findViewById(R.id.presidency_button);
         mPresidencyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -23,7 +23,7 @@ public class InitializerActivity extends AppCompatActivity {
             }
         });
 
-        mVotingButton = (Button) findViewById(R.id.voting_button);
+        mVotingButton = findViewById(R.id.voting_button);
         mVotingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
